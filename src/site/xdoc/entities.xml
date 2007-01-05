@@ -1,0 +1,81 @@
+<document>
+	<properties>
+		<title>Mork Entities</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Entities">
+			<p>
+				Each Mork entity is described in detail here, including
+				sample code how they are parsed with the Java Mork
+				implementation.
+			</p>
+		</section>
+		<subsection name="Dictionary">
+			<p>
+				Dictionaries are Maps containing Key-Value pairs. A
+				dictionary covers a specific scope. The default scope is
+				the Atom scope and it can be changed with a special tag
+				at the beginning of a dictionary (&lt;a=c&gt;).
+			</p>
+			<p>Each Key-Value pair is enclosed by parentheses.</p>
+			<source>
+				<![CDATA[
+Dict dict = new Dict("< <a=c> (80=foo)(81=bar) >");
+assertSame(ScopeTypes.COLUMN_SCOPE, dict.getDefaultScope());
+assertEquals(2, dict.getAliasCount());
+assertEquals("foo", dict.getValue("80"));
+assertEquals("bar", dict.getValue("81"));
+assertEquals("a", dict.getScopeName());
+assertEquals("c", dict.getScopeValue());
+				]]>
+			</source>
+			<p>
+				The column scope dictionary is used for column names.
+				The atom scope dictionary is used for cell values. This
+				separation is used to decrease the size of column ids,
+				because there are less columns than values.
+			</p>
+			<p>
+				A Mork database can have multiple dictionaries.
+				Definitions in subsequent dictionaries will replace
+				previously existing definitions.
+			</p>
+		</subsection>
+		<subsection name="Table">
+			<p>Tables consist of optional meta-information and rows.</p>
+		</subsection>
+		<subsection name="Row">
+			<p>
+				A row consists of a row id and data pairs. Such a
+				key-value pair is called a Cell. A row can have many
+				cells.
+			</p>
+		</subsection>
+		<subsection name="Cell">
+			<p>
+				A cell is a key-value pair in a Mork database, either in
+				the Dictionary definition or within a row. The same
+				format is also used for meta-information in various
+				places such as the meta-dict or the meta-table. Each
+				data pair is a key-value pair. Both, the key and the
+				value, can be represented by literal values or by id
+				references.
+			</p>
+		</subsection>
+		<subsection name="Group">
+			<p>
+				Groups represent something like transactions in a Mork
+				database. A group can add or remove content. A group can
+				either be in a committed state, or in an aborted state.
+				A group can contain tables and rows.
+			</p>
+		</subsection>
+		<subsection name="Literal">
+			<p>
+				Literal values are encoded. Octets which must be
+				hex-encoded are prefixed by a $ dollar sign.
+			</p>
+		</subsection>
+	</body>
+</document>

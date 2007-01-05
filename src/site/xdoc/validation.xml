@@ -1,0 +1,21 @@
+<document>
+	<properties>
+		<title>Mork Format Validation</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Mork Format Validation">
+			<p>
+				The Java Mork implementation contains some validation
+				checks, but it is far from being complete or fool proof.
+				Most of the time, if anything goes wrong, it just
+				returns empty values.
+			</p>
+			<p>
+				This library does not include any external usable
+				functionality to validate a Mork database or any Mork
+				entities.
+			</p>
+		</section>
+	</body>
+</document>

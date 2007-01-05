@@ -1,0 +1,17 @@
+<document>
+	<properties>
+		<title>Developers Guide</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Developers Guide">
+			<p>My advice? Dont.</p>
+			<p>
+				If you really want to develop, graps your favourite IDE
+				with Subversion and point it to the project repository.
+				It's freely accessible and not protected, everybody can
+				commit changes.
+			</p>
+		</section>
+	</body>
+</document>

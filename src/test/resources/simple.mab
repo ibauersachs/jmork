@@ -1,0 +1,3 @@
+<<(atomScope=c)>(80=cards)(81=dn)(82=modifytimestamp)(83=cn)(84=givenname)(85=mail)(86=xmozillausehtmlmail)(87=sn)>
+<(90=cn=John Hackworth,mail=jhackworth@atlantis.com)(91=19981001014531Z)(92=John Hackworth)(93=John)(94=jhackworth@atlantis.com)(95=FALSE)(96=Hackworth)>
+[1:^80(^81^90)(^82^91)(^83^92)(^84^93)(^85^94)(^86^95)(^87^96)]

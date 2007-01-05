@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Maven">
+	<bannerLeft>
+		<name>Java Mork</name>
+		<href>http://www.smartwerkz.com/projects/</href>
+	</bannerLeft>
+	<bannerRight>
+		<name>smartwerkz</name>
+		<src>http://www.smartwerkz.com/smartwerkz.png</src>
+		<href>http://www.smartwerkz.com/</href>
+	</bannerRight>
+	<body>
+		<links>
+			<item name="Java-Community" href="http://www.java-community.de/" />
+			<item name="Smartwerkz" href="http://www.smartwerkz.com/" />
+		</links>
+		<menu name="Overview">
+			<item name="Home" href="index.html" />
+			<item name="What is Mork?" href="mork.html" />
+			<item name="Usage" href="usage.html" />
+			<item name="Download" href="download.html" />
+		</menu>
+		<menu name="Documentation">
+			<item name="Entities" href="entities.html" />
+			<item name="Events" href="events.html" />
+			<item name="Validation" href="validation.html" />
+			<item name="Transformations" href="transformations.html" />
+			<item name="Developer" href="developer.html" />
+		</menu>
+		${reports}
+	</body>
+</project>

@@ -1,0 +1,91 @@
+<document>
+	<properties>
+		<title>Usage of Mork</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Usage">
+			<p>
+				There are multiple ways to parse a Mork database:
+				<ul>
+					<li>Event-based</li>
+					<li>Document-based</li>
+					<li>Low level access</li>
+				</ul>
+			</p>
+		</section>
+		<subsection name="Event-Based Mork Parsing">
+			<p>
+				Instantiate a MorkParser and add your EventListener to
+				it. Use one of the parse() methods to start parsing a
+				resource containing your Mork database.
+			</p>
+			<p>
+				Your event listener will be notified for each parsed
+				item, which must then be parsed separately.
+			</p>
+			<source>
+				<![CDATA[
+EventLister myHandler = ...;
+MorkParser parser = new MorkParser();
+parser.addEventListener(myHandler);
+parser.parse(new File("abook.mab"));
+				]]>
+			</source>
+		</subsection>
+		<subsection name="Document-Based Mork Parsing">
+			<p>
+				Instantiate a MorkDocument and use the load method to
+				load your Mork database from a resource. Then use the
+				getters to access items such as tables, rows or
+				dictionaries.
+			</p>
+			<source>
+				<![CDATA[
+Reader reader = new FileReader("abook.mab");
+MorkDocument morkDocument = new MorkDocument(reader);
+List<Dict> dicts = morkDocument.getDicts();
+List<Row> rows= morkDocument.getRows();
+				]]>
+			</source>
+		</subsection>
+		<subsection name="High level access">
+			<p>
+				The Mork library also provides some predefined
+				implementations for Application-specific database
+				formats, such as the Mozilla Thunderbird Address Book
+				format.
+			</p>
+			<source>
+				<![CDATA[
+InputStream inputStream = getClass().getResourceAsStream("/abook_single.mab")
+AddressBook addressBook = new AddressBook();
+addressBook.load(inputStream);
+List<Address> addresses = addressBook.getAddresses();
+				]]>
+			</source>
+		</subsection>
+		<subsection name="Low level access">
+			<p>
+				If you wish to handle single Mork-entities on their own,
+				separated from a whole database resource, you can do so
+				by instantiate single entities.
+			</p>
+			<p>
+				Instantiating an entity such as a Dict will
+				automatically parse the syntax of the content, including
+				dereferencing object identifiers.
+			</p>
+			<source>
+				<![CDATA[
+Dict dict = new Dict("< <a=c> (80=foo) >");
+assertSame(ScopeTypes.COLUMN_SCOPE, dict.getDefaultScope());
+assertEquals(1, dict.getAliasCount());
+assertEquals("foo", dict.getValue("80"));
+assertEquals("a", dict.getScopeName());
+assertEquals("c", dict.getScopeValue());
+				]]>
+			</source>
+		</subsection>
+	</body>
+</document>

@@ -1,0 +1,44 @@
+<document>
+	<properties>
+		<title>Mork Java Implementation</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Introduction">
+			<p>
+				Welcome to a Java implementation of the Mork format. For
+				more details on the Mork database format, please see the
+				section
+				<strong>What is Mork?</strong>
+			</p>
+		</section>
+		<subsection name="Supported Features">
+			<p>
+				This is a list of features already supported by this
+				Mork implementation. It is not complete, but covers all the
+				basic stuff required to read 80% of the available files.
+			</p>
+			<ul>
+				<li>
+					Read Mork files, including:
+					<ul>
+						<li>Dictionaries</li>
+						<li>Literals</li>
+						<li>Rows</li>
+						<li>Tables</li>
+						<li>Cells</li>
+						<li>Groups</li>
+						<li>Object References</li>
+					</ul>
+				</li>
+				<li>Read Mozilla Thunderbird Address Books</li>
+			</ul>
+		</subsection>
+		<subsection name="Unsupported Features">
+			<ul>
+				<li>Write Mork files</li>
+				<li>Transaction roll-backs</li>
+			</ul>
+		</subsection>
+	</body>
+</document>

@@ -1,0 +1,35 @@
+<document>
+	<properties>
+		<title>Download</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Download Latest Snapshot">
+			<ul>
+				<li>
+					<a href="mork-1.0-SNAPSHOT-bin.tar.gz">
+						Download mork-1.0-SNAPSHOT-bin.tar.gz
+					</a>
+				</li>
+				<li>
+					<a href="mork-1.0-SNAPSHOT-src.tar.gz">
+						Download mork-1.0-SNAPSHOT-src.tar.gz
+					</a>
+				</li>
+				<li>
+					<a href="mork-1.0-SNAPSHOT-bin.zip">
+						Download mork-1.0-SNAPSHOT-bin.zip
+					</a>
+				</li>
+				<li>
+					<a href="mork-1.0-SNAPSHOT-src.zip">
+						Download mork-1.0-SNAPSHOT-src.zip
+					</a>
+				</li>
+			</ul>
+		</section>
+		<subsection name="Archived Releases">
+			<p>There are currently no archived releases.</p>
+		</subsection>
+	</body>
+</document>

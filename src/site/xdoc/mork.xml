@@ -1,0 +1,40 @@
+<document>
+	<properties>
+		<title>What is Mork?</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="What is Mork?">
+			<p>
+				Mork is a more or less sick database format for text
+				files. Some of the ideas behind it are good, some are
+				... bad. Nevertheless, Mork is used in some widespread
+				applications and up to today, there is no independent
+				library available which can handle Mork files.
+			</p>
+			<p>
+				This project's goal is to provide a Java implementation
+				for the Mork format. The primary goal is to provide read
+				functionality to database files. The focus is not on
+				writing Mork files. The Mozilla applications which use
+				Mork files (Firefox, Thunderbird) will replace the
+				format in the future nevertheless.
+			</p>
+			<p>
+				Mork consists of dictionaries (key/value maps), database
+				items like table, row, cell and a transactional-style
+				semantic called groups. The data can be stored as
+				literal values or as referenced identifiers, which point
+				to values in the dictionaries. The data itself is
+				contained in tables or loose rows. Cells are simple
+				assignments (key=value).
+			</p>
+			<p>
+				Some effort has been put into how values are escaped,
+				how compression could be made more effective. But these
+				efforts are not worth the trouble which you have parsing
+				the format.
+			</p>
+		</section>
+	</body>
+</document>

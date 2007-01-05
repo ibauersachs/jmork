@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>Mork Java Implementation</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<release version="current" description="Current work version">
+			<action dev="Mike Haller" type="add">
+				Work in progress: setting up
+			</action>
+		</release>
+		<release version="1.0.0" date="2007-01-05" description="Release">
+			<action dev="Mike Haller" type="add">
+				Supports reading Mozilla Thunderbird Address Books
+			</action>
+		</release>
+	</body>
+</document>

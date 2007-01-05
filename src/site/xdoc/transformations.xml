@@ -1,0 +1,19 @@
+<document>
+	<properties>
+		<title>Format Transformations</title>
+		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
+	</properties>
+	<body>
+		<section name="Format Transformations">
+			<p>
+				It is planned to provide transformation tools to convert
+				Mork databases into more readable formats, such as XML,
+				SQL, LDIF or even Excel. (Anything is better than Mork)
+			</p>
+			<p>
+				Importers which read data into Mork databases are not
+				planned.
+			</p>
+		</section>
+	</body>
+</document>
