@@ -7,23 +7,33 @@
 		<section name="Download Latest Snapshot">
 			<ul>
 				<li>
-					<a href="mork-1.0-SNAPSHOT-bin.tar.gz">
-						Download mork-1.0-SNAPSHOT-bin.tar.gz
+					<a href="files/jmork-1.0-SNAPSHOT-bin.tar.bz2">
+						jmork-1.0-SNAPSHOT-bin.tar.bz2
 					</a>
 				</li>
 				<li>
-					<a href="mork-1.0-SNAPSHOT-src.tar.gz">
-						Download mork-1.0-SNAPSHOT-src.tar.gz
+					<a href="files/jmork-1.0-SNAPSHOT-bin.tar.gz">
+						jmork-1.0-SNAPSHOT-bin.tar.gz
 					</a>
 				</li>
 				<li>
-					<a href="mork-1.0-SNAPSHOT-bin.zip">
-						Download mork-1.0-SNAPSHOT-bin.zip
+					<a href="files/jmork-1.0-SNAPSHOT-bin.zip">
+						jmork-1.0-SNAPSHOT-bin.zip
 					</a>
 				</li>
 				<li>
-					<a href="mork-1.0-SNAPSHOT-src.zip">
-						Download mork-1.0-SNAPSHOT-src.zip
+					<a href="files/jmork-1.0-SNAPSHOT-src.tar.bz2">
+						jmork-1.0-SNAPSHOT-src.tar.bz2
+					</a>
+				</li>
+				<li>
+					<a href="files/jmork-1.0-SNAPSHOT-src.tar.gz">
+						jmork-1.0-SNAPSHOT-src.tar.gz
+					</a>
+				</li>
+				<li>
+					<a href="files/jmork-1.0-SNAPSHOT-src.zip">
+						jmork-1.0-SNAPSHOT-src.zip
 					</a>
 				</li>
 			</ul>

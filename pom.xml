@@ -108,6 +108,7 @@
 					</execution>
 				</executions>
 			</plugin>
+<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clover-plugin</artifactId>
@@ -123,6 +124,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			 -->
 			<plugin>
 				<groupId>net.objectlab</groupId>
 				<artifactId>mvn-qalab-plugin</artifactId>
@@ -144,11 +146,14 @@
 						<descriptor>src/assembly/bin.xml</descriptor>
 						<descriptor>src/assembly/src.xml</descriptor>
 					</descriptors>
+					<outputDirectory>
+					${project.build.directory}/site/files/
+					</outputDirectory>
 				</configuration>
 				<executions>
 					<execution>
 						<id>make-assembly</id>
-						<phase>package</phase>
+						<phase>site</phase>
 						<goals>
 							<goal>attached</goal>
 						</goals>
@@ -215,9 +220,11 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
 			</plugin>
+			<!-- 
 			<plugin>
 				<artifactId>maven-clover-plugin</artifactId>
 			</plugin>
+			 -->
 			<!-- Codehaus Plugins -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
