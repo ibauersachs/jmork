@@ -6,17 +6,40 @@
 	<body>
 		<section name="Introduction">
 			<p>
-				Welcome to a Java implementation of the Mork format. For
-				more details on the Mork database format, please see the
-				section
-				<strong>What is Mork?</strong>
+				Welcome to
+				<strong>
+					jMork - a Java implementation of the Mork
+				</strong>
+				database format.
+			</p>
+			<p>
+				For more details on the Mork database format, please see
+				the section
+				<a href="mork.html">What is Mork?</a>
+				.
+			</p>
+			<p>
+				Mork is used in some very popular application, such as
+				the
+				<a href="http://www.mozilla.com/">Mozilla Firefox</a>
+				browser and the
+				<a href="http://www.mozilla.com/">
+					Mozilla Thunderbird
+				</a>
+				mail client. It is used to store internal data, such as
+				the address history or the address books.
+			</p>
+			<p>
+				jMork provides the functionality to access these Mork
+				databases from Java applications.
 			</p>
 		</section>
 		<subsection name="Supported Features">
 			<p>
 				This is a list of features already supported by this
-				Mork implementation. It is not complete, but covers all the
-				basic stuff required to read 80% of the available files.
+				Mork implementation. It is not complete, but covers all
+				the basic stuff required to read 80% of the available
+				files.
 			</p>
 			<ul>
 				<li>
@@ -35,9 +58,25 @@
 			</ul>
 		</subsection>
 		<subsection name="Unsupported Features">
+			<p>
+				Mork features, which are not yet supported by this jMork
+				implementation, but more or less planned to be in there
+				some time:
+			</p>
 			<ul>
 				<li>Write Mork files</li>
 				<li>Transaction roll-backs</li>
+			</ul>
+			<p>
+				Features, which could be implemented in the scope of the
+				jMork project, but which are not yet planned:
+			</p>
+			<ul>
+				<li>Mork JDBC Driver</li>
+				<li>Eclipse Plugin (Editor support, Outline)</li>
+				<li>
+					Transformation tools (Mork2SQL, Mork2LDIF, Mork2XML
+				</li>
 			</ul>
 		</subsection>
 	</body>

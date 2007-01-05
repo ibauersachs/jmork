@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="Maven">
 	<bannerLeft>
-		<name>Java Mork</name>
-		<href>http://www.smartwerkz.com/projects/</href>
+		<name>jMork</name>
+		<href>http://www.smartwerkz.com/projects/jmork/</href>
 	</bannerLeft>
 	<bannerRight>
 		<name>smartwerkz</name>
@@ -15,7 +15,7 @@
 			<item name="Smartwerkz" href="http://www.smartwerkz.com/" />
 		</links>
 		<menu name="Overview">
-			<item name="Home" href="index.html" />
+			<item name="jMork" href="index.html" />
 			<item name="What is Mork?" href="mork.html" />
 			<item name="Usage" href="usage.html" />
 			<item name="Download" href="download.html" />

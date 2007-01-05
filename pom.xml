@@ -2,13 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>mork</groupId>
-	<artifactId>mork</artifactId>
+	<groupId>jmork</groupId>
+	<artifactId>jmork</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Mork Java Implementation</name>
-	<url>http://www.smartwerkz.com/projects/mork</url>
-	<description>A Java Implementation to parse Mork files</description>
+	<name>Java Mork</name>
+	<url>http://www.smartwerkz.com/projects/jmork/</url>
+	<description>
+		A Java implementation of the Mork database format
+	</description>
 	<issueManagement>
 		<system>JIRA</system>
 		<url>http://www.smartwerkz.com/jira/browse/LAB</url>
@@ -44,12 +46,14 @@
 		<url>http://www.smartwerkz.com/</url>
 	</organization>
 	<scm>
-		<url>http://www.smartwerkz.com/svn/public/mork-1.4/trunk/</url>
+		<url>
+			http://www.smartwerkz.com/svn/public/projects/jmork/trunk/
+		</url>
 		<connection>
-			scm:svn:http://www.smartwerkz.com/svn/public/mork-1.4/trunk/
+			scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/
 		</connection>
 		<developerConnection>
-			scm:svn:http://www.smartwerkz.com/svn/public/mork-1.4/trunk/
+			scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/
 		</developerConnection>
 	</scm>
 	<distributionManagement>
@@ -129,6 +133,24 @@
 						<phase>site</phase>
 						<goals>
 							<goal>merge-all</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assembly/bin.xml</descriptor>
+						<descriptor>src/assembly/src.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attached</goal>
 						</goals>
 					</execution>
 				</executions>

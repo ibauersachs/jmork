@@ -6,19 +6,23 @@
 	<body>
 		<section name="What is Mork?">
 			<p>
-				Mork is a more or less sick database format for text
-				files. Some of the ideas behind it are good, some are
-				... bad. Nevertheless, Mork is used in some widespread
+				Mork is a more or less sick
+				<strong>database format for text files</strong>
+				. Some of the ideas behind it are good, some are ...
+				bad. Nevertheless, Mork is used in some widespread
 				applications and up to today, there is no independent
 				library available which can handle Mork files.
 			</p>
 			<p>
 				This project's goal is to provide a Java implementation
-				for the Mork format. The primary goal is to provide read
-				functionality to database files. The focus is not on
-				writing Mork files. The Mozilla applications which use
-				Mork files (Firefox, Thunderbird) will replace the
-				format in the future nevertheless.
+				for the Mork format.
+				<strong>
+					The primary goal of jMork is to provide read
+					functionality to database files.
+				</strong>
+				The focus is not on writing Mork files. The Mozilla
+				applications which use Mork files (Firefox, Thunderbird)
+				will replace the format in the future nevertheless.
 			</p>
 			<p>
 				Mork consists of dictionaries (key/value maps), database

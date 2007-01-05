@@ -1,4 +1,4 @@
-A Java Implementation of a Mork Parser
+jmork - A Java Implementation of a Mork Parser
 written by Mike Haller <mike.haller@smartwerkz.com>
 
 About

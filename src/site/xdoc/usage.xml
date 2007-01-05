@@ -16,8 +16,11 @@
 		</section>
 		<subsection name="Event-Based Mork Parsing">
 			<p>
-				Instantiate a MorkParser and add your EventListener to
-				it. Use one of the parse() methods to start parsing a
+				Instantiate a
+				<code>mork.MorkParser</code>
+				and add your
+				<code>mork.EventListener</code>
+				to it. Use one of the parse() methods to start parsing a
 				resource containing your Mork database.
 			</p>
 			<p>
@@ -35,10 +38,11 @@ parser.parse(new File("abook.mab"));
 		</subsection>
 		<subsection name="Document-Based Mork Parsing">
 			<p>
-				Instantiate a MorkDocument and use the load method to
-				load your Mork database from a resource. Then use the
-				getters to access items such as tables, rows or
-				dictionaries.
+				Instantiate a
+				<code>mork.MorkDocument</code>
+				and use the load method to load your Mork database from
+				a resource. Then use the getters to access items such as
+				tables, rows or dictionaries.
 			</p>
 			<source>
 				<![CDATA[
@@ -72,9 +76,10 @@ List<Address> addresses = addressBook.getAddresses();
 				by instantiate single entities.
 			</p>
 			<p>
-				Instantiating an entity such as a Dict will
-				automatically parse the syntax of the content, including
-				dereferencing object identifiers.
+				Instantiating an entity such as a
+				<code>mork.Dict</code>
+				will automatically parse the syntax of the content,
+				including dereferencing object identifiers.
 			</p>
 			<source>
 				<![CDATA[
