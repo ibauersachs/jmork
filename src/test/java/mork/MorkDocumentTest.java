@@ -31,14 +31,5 @@ public class MorkDocumentTest extends TestCase {
 		assertEquals("1",row.getRowId());
 		assertEquals("John",row.getValue("givenname"));
 	}
-
-	public void testComplexMorkDocument() throws Exception {
-		InputStreamReader reader = new InputStreamReader(getClass().getResource("/abook2.mab").openStream());
-		MorkDocument morkDocument = new MorkDocument(reader);
-		List<Row> rows= morkDocument.getRows();
-		assertEquals(28,rows.size());
-		List<Table> tables = morkDocument.getTables();
-		assertEquals(4,tables.size());
-	}
 	
 }

@@ -146,28 +146,6 @@ public class MorkParserTest extends TestCase {
 				"1:^80(^81^90)(^82^91)(^83^92)(^84^93)(^85^94)(^86^95)(^87^96)");
 	}
 
-	public void testParserComplexExample() throws Exception {
-		InputStream is = getClass().getResource("/abook2.mab").openStream();
-		parser.parse(is);
-		assertEvent(mockEventListener, EventType.COMMENT,
-				" <!-- <mdb:mork:z v=\"1.4\"/> -->");
-		assertEvent(mockEventListener, EventType.BEGIN_DICT);
-		assertEvent(mockEventListener, EventType.BEGIN_DICT_METAINFO);
-		assertEvent(mockEventListener, EventType.END_DICT_METAINFO);
-		assertEvent(mockEventListener, EventType.COMMENT, " (f=iso-8859-1)");
-		assertEquals(mockEventListener.pop().eventType, EventType.END_DICT);
-		assertEvent(mockEventListener, EventType.BEGIN_DICT);
-		assertEquals(mockEventListener.pop().eventType, EventType.END_DICT);
-		assertEvent(mockEventListener, EventType.BEGIN_TABLE);
-		assertEvent(mockEventListener, EventType.BEGIN_METATABLE);
-		assertEvent(mockEventListener, EventType.END_METATABLE, "(k^BF:c)(s=9)");
-		assertEquals(mockEventListener.pop().eventType, EventType.TABLE);
-		for (int i = 1; i < 38; i++) {
-			assertEquals(mockEventListener.pop().eventType,
-					EventType.GROUP_COMMIT);
-		}
-	}
-
 	private static void assertEvent(MockEventListener mockEventListener,
 			EventType eventType) {
 		assertEvent(mockEventListener, eventType, null);
