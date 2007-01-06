@@ -4,10 +4,23 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.ByteBuffer;
 
+/**
+ * Parses literal Mork data and unescapes bytes according to the format
+ * specification.
+ * 
+ * @author mhaller
+ */
 public class LiteralParser {
 
+	/**
+	 * Parses the given content as Mork Literal data
+	 * 
+	 * @param reader
+	 *            the Mork-escaped content
+	 * @return unescaped literal content value
+	 * @throws IOException
+	 */
 	public String parse(Reader reader) throws IOException {
-		reader.mark(1024);
 		ByteBuffer buf = ByteBuffer.allocate(64);
 		do {
 			int c = reader.read();
@@ -42,7 +55,6 @@ public class LiteralParser {
 			// In all other cases - plain character
 			buf.put((byte) c);
 		} while (true);
-		reader.mark(1024);
 		return new String(buf.array(), 0, buf.position(), "UTF-8");
 	}
 

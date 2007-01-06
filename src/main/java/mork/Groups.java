@@ -5,10 +5,23 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Parses the part of a Mork file containing Group definitions. A group is
+ * something like a transaction.
+ * 
+ * @author mhaller
+ */
 public class Groups {
 
+	/** Internal container for all parsed groups */
 	private List<Group> groups = new LinkedList<Group>();
 
+	/**
+	 * Parse the given String for Group definitions
+	 * 
+	 * @param content
+	 *            the Mork content with Group definitions
+	 */
 	public Groups(String content) {
 		content = StringUtils.removeCommentLines(content);
 		content = StringUtils.removeNewlines(content);
@@ -23,10 +36,22 @@ public class Groups {
 		}
 	}
 
+	/**
+	 * Returns the number of groups found in the content
+	 * 
+	 * @return the number of groups
+	 */
 	public int countGroups() {
 		return groups.size();
 	}
 
+	/**
+	 * Return a Group by its position in the internal list.
+	 * 
+	 * @param i
+	 *            the index position (This is NOT the Group ID!)
+	 * @return the Group
+	 */
 	public Group getGroup(int i) {
 		return groups.get(i);
 	}

@@ -1,6 +1,16 @@
 package mork;
 
+/**
+ * The MorkParser fires events and each event has a type {@link EventType} and
+ * an optional String value.
+ * 
+ * This enumeration represents all possible event types which can occur while
+ * parsing a Mork database file.
+ * 
+ * @author mhaller
+ */
 public enum EventType {
+
 	// < open angle - begins a dict (inside a dict, begins metainfo row)
 	// > close angle - ends a dict
 	// [ open bracket - begins a row (inside a row, begins metainfo row)

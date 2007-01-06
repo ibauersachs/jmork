@@ -6,8 +6,19 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Utilities for parsing String content.
+ * 
+ * @author mhaller
+ */
 public class StringUtils {
 
+	/**
+	 * Removes C/C++-style single line comments from the given content
+	 * 
+	 * @param value
+	 * @return
+	 */
 	public static String removeCommentLines(String value) {
 		Pattern pattern = Pattern.compile("(//.*)([\\r\\n]|$)",
 				Pattern.MULTILINE);
@@ -18,6 +29,12 @@ public class StringUtils {
 		return value;
 	}
 
+	/**
+	 * Removes all newlines (Carriage Feed and Newline character) from the value
+	 * 
+	 * @param value
+	 * @return
+	 */
 	public static String removeNewlines(String value) {
 		return value.replaceAll("[\\n\\r]", "");
 	}
@@ -28,6 +45,18 @@ public class StringUtils {
 		return value;
 	}
 
+	/**
+	 * Loads a Classpath Resource and returns it as single String
+	 * 
+	 * @param resourceName
+	 *            the classpath resource to load, relative to the StringUtils
+	 *            class. E.g. use "/foo.txt" to load files from the root of the
+	 *            classpath.
+	 * @return a String with the whole content of the file. Newlines are
+	 *         replaced with the newline character.
+	 * @throws RuntimeException
+	 *             if there was any IO error with the resource
+	 */
 	public static String fromResource(String resourceName) {
 		final BufferedReader reader = new BufferedReader(new InputStreamReader(
 				StringUtils.class.getResourceAsStream(resourceName)));

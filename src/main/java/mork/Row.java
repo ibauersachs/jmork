@@ -5,14 +5,36 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * A Row can be located either in the root of Mork files or in tables. A Row
+ * contains multiple values and has a row identifier associated. A row can also
+ * be scoped.
+ * 
+ * @author mhaller
+ */
 public class Row {
 
+	/** The identifier of the row */
 	private String rowId;
 
+	/** An optional scope of the row */
 	private String scopeName;
 
+	/** The parsed values of the cells in the Row */
 	private Aliases aliases;
 
+	/**
+	 * Parse a Row in the given content (must include the brackets) and resolves
+	 * references using the given dictionaries.
+	 * 
+	 * The Row can optionally have a scope.
+	 * 
+	 * @param content
+	 *            the Mork content of a Row including opening and closing
+	 *            brackets.
+	 * @param dicts
+	 *            a list of dictionaries
+	 */
 	public Row(String content, List<Dict> dicts) {
 		content = StringUtils.removeCommentLines(content);
 		content = StringUtils.removeNewlines(content);
@@ -47,23 +69,56 @@ public class Row {
 		}
 	}
 
+	/**
+	 * Parse a Row in the given content (must include the brackets). Does not
+	 * resolve references as no dictionaries are given. The Row can optionally
+	 * have a scope.
+	 * 
+	 * @param content
+	 *            the Mork content of a Row including opening and closing
+	 *            brackets.
+	 */
 	public Row(String content) {
 		this(content, Dict.EMPTY_LIST);
 	}
 
+	/**
+	 * Returns the identifier of the row, usually a numeric value
+	 * 
+	 * @return the identifier of the row
+	 */
 	public String getRowId() {
 		return this.rowId;
 	}
 
+	/**
+	 * Returns an optional scope of the row, might be <code>null</code>.
+	 * 
+	 * @return the scope of the row if defined, or <code>null</code>
+	 */
 	public String getScopeName() {
 		return this.scopeName;
 	}
 
+	/**
+	 * Returns the value of a cell with the given id. The id must already be
+	 * dereferenced.
+	 * 
+	 * @param id
+	 *            the id of the cell
+	 * @return the dereferenced literal value of the Cell with the given id
+	 */
 	public String getValue(String id) {
 		return aliases.getValue(id);
 	}
 
-	public Map<String,String> getValues() {
+	/**
+	 * Returns a Map of all values found in the Row
+	 * 
+	 * @return a Map of all values found in the Row. The column header names
+	 *         (ids) and the values are already dereferenced.
+	 */
+	public Map<String, String> getValues() {
 		return aliases.getValues();
 	}
 
