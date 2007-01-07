@@ -41,7 +41,7 @@ public class MorkDocument implements EventListener {
 	public void onEvent(Event event) {
 		switch (event.eventType) {
 		case END_DICT: {
-			Dict dict = new Dict("<" + event.value + ">");
+			Dict dict = new Dict("<" + event.value + ">",dicts);
 			dicts.add(dict);
 			break;
 		}

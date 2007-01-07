@@ -11,6 +11,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Parses Mork content using event-based parsing.
@@ -370,6 +371,7 @@ public class MorkParser {
 		fireEvent(EventType.BEGIN_DICT);
 		final StringBuffer buffer = new StringBuffer();
 		boolean inMetaDict = false;
+		boolean isInCell = false;
 		do {
 			int c = pis.read();
 			switch (c) {
@@ -391,7 +393,19 @@ public class MorkParser {
 				}
 				fireEvent(EventType.END_DICT, buffer.toString());
 				return;
+			case '(':
+				isInCell = true;
+				buffer.append((char) c);
+				break;
+			case ')':
+				isInCell = false;
+				buffer.append((char) c);
+				break;
 			case '/':
+				if (isInCell) {
+					buffer.append((char) c);
+					break;
+				}
 				int d = pis.read();
 				if (d == '/') {
 					parseComment(pis);

@@ -149,6 +149,8 @@ public class DictTest extends TestCase {
 
 	public void testDictWithComment() throws Exception {
 		String content = StringUtils.fromResource("/DictTestWithCharset.txt");
+		content = StringUtils.removeCommentLines(content);
+		content = StringUtils.removeNewlines(content);
 		Dict dict = new Dict(content);
 		assertEquals(12, dict.getAliasCount());
 		assertEquals("Typed", dict.getValue("8A"));
@@ -158,6 +160,8 @@ public class DictTest extends TestCase {
 
 	public void testDictSinglepartDict() throws Exception {
 		String content = StringUtils.fromResource("/singlepart.dict.txt");
+		content = StringUtils.removeCommentLines(content);
+		content = StringUtils.removeNewlines(content);
 		Dict dict = new Dict(content);
 		assertEquals(70, dict.getAliasCount());
 		assertEquals("WorkCity", dict.getValue("A2"));
@@ -167,6 +171,8 @@ public class DictTest extends TestCase {
 
 	public void testDictSinglepartDict2() throws Exception {
 		String content = StringUtils.fromResource("/singlepart.dict2.txt");
+		content = StringUtils.removeCommentLines(content);
+		content = StringUtils.removeNewlines(content);
 		Dict dict = new Dict(content);
 		assertEquals(150, dict.getAliasCount());
 		assertEquals("25", dict.getValue("13D"));
@@ -192,7 +198,7 @@ public class DictTest extends TestCase {
 			Dict.dereference("", dicts, ScopeTypes.COLUMN_SCOPE);
 			fail("Exception expected");
 		} catch (Exception expected) {
-			assertEquals("Could not find dictionary for scope: COLUMN_SCOPE",
+			assertEquals("Dictionary could not dereference key:  in scope COLUMN_SCOPE",
 					expected.getMessage());
 		}
 	}

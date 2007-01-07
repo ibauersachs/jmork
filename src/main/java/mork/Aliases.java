@@ -1,5 +1,6 @@
 package mork;
 
+import java.io.PrintStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -103,6 +104,10 @@ public class Aliases {
 	 */
 	public Map<String, String> getValues() {
 		return Collections.unmodifiableMap(dict);
+	}
+
+	public void printAliases(PrintStream out) {
+		out.println(dict);
 	}
 
 }

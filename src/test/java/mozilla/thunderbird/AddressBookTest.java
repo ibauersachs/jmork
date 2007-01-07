@@ -19,6 +19,11 @@ public class AddressBookTest extends TestCase {
 		addressBook.load(getClass().getResourceAsStream("/simple.mab"));
 	}
 	
+	public void testUrlInGroup() throws Exception {
+		AddressBook addressBook = new AddressBook();
+		addressBook.load(getClass().getResourceAsStream("/abook_urlingroup.mab"));
+	}
+	
 	public void testAddressBookReader() throws Exception {
 		AddressBook addressBook = new AddressBook();
 		addressBook.load(getClass().getResourceAsStream("/abook_single.mab"));
@@ -32,4 +37,10 @@ public class AddressBookTest extends TestCase {
 //		assertEquals("Haller",address.getLastName());
 //		assertEquals("Mike Haller",address.getDisplayName());
 	}
+	
+	public void testAddressBookNoAtomDatabaseFound() throws Exception {
+		AddressBook addressBook = new AddressBook();
+		addressBook.load(getClass().getResourceAsStream("/abook_noatomdb.mab"));
+	}
+
 }

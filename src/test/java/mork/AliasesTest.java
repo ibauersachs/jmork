@@ -29,4 +29,10 @@ public class AliasesTest extends TestCase {
 		assertEquals("bar", aliases.getValue("foo"));
 	}
 
+	public void testCommentURLProblem() throws Exception {
+		String content = "(B7=b)(81=Mike)(82=Haller)(83=)(84=Mike Haller)(85=mhaller)(86\n    =mike.haller@smartwerkz.com)(87=info@mhaller.de)(88=1)(80=0)(89\n    =Aspenweg 16)(8A=Eriskirch)(8B=BW)(8C=88097)(8D=Deutschland)(8E\n    =http://www.smartwerkz.com/)(8F=Nico)";
+		Aliases aliases = new Aliases(content);
+		assertEquals("Nico", aliases.getValue("8F"));
+	}
+
 }

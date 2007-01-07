@@ -44,8 +44,10 @@ public class AddressBook {
 		}
 		for (Table table : morkDocument.getTables()) {
 			for (Row row : table.getRows()) {
-				final Address address = new Address(row.getValues());
-				addresses.add(address);
+				if (row.getValue("DisplayName") != null) {
+					final Address address = new Address(row.getValues());
+					addresses.add(address);
+				}
 			}
 		}
 	}

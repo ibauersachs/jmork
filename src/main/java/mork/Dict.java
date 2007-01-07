@@ -42,8 +42,21 @@ public class Dict {
 	 *            a valid dictionary definition
 	 */
 	public Dict(String dictString) {
-		dictString = StringUtils.removeCommentLines(dictString);
-		dictString = StringUtils.removeNewlines(dictString);
+		this(dictString, Dict.EMPTY_LIST);
+	}
+
+	/**
+	 * Parse a Dictionary using the given String content. The simplest
+	 * dictionary possible is <code>&gt;&lt;</code>.
+	 * 
+	 * @param dictString
+	 *            a valid dictionary definition
+	 * @param dicts
+	 *            a preexisting list of dictionaries
+	 */
+	public Dict(String dictString, List<Dict> dicts) {
+		// dictString = StringUtils.removeCommentLines(dictString);
+		// dictString = StringUtils.removeNewlines(dictString);
 
 		Pattern pattern = Pattern.compile(
 				"\\s*<\\s*(<\\(?.*\\)?>)?[\\s\\n\\r]*(.*)>[\\s\\r\\n]*",
@@ -66,7 +79,7 @@ public class Dict {
 		}
 
 		// Aliases
-		aliases = new Aliases(aliasesDef);
+		aliases = new Aliases(aliasesDef, dicts);
 	}
 
 	/**
@@ -170,11 +183,12 @@ public class Dict {
 				dereference = dict.dereference(id);
 				if (dereference != null) {
 					return dereference;
+				} else {
 				}
 			}
 		}
-		throw new RuntimeException("Could not find dictionary for scope: "
-				+ scope);
+		throw new RuntimeException("Dictionary could not dereference key: "
+				+ id + " in scope " + scope);
 	}
 
 }
