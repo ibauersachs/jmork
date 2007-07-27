@@ -35,4 +35,16 @@ public class AliasesTest extends TestCase {
 		assertEquals("Nico", aliases.getValue("8F"));
 	}
 
+	/**
+	 * Test values with escaped character.
+	 * 
+	 * JIRA Issue: JMORK-1
+	 * 
+	 * @throws Exception
+	 */
+	public void testEscaping() throws Exception {
+		Aliases aliases = new Aliases("(foo=(bar\\))");
+		assertEquals("(bar)", aliases.getValue("foo"));
+	}
+
 }

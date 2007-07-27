@@ -17,6 +17,7 @@ public class LiteralParserTest extends TestCase {
 		assertEquals("te$t", parser.parse(new StringReader("te\\$t")));
 		assertEquals("", parser.parse(new StringReader(")test")));
 		assertEquals(")test", parser.parse(new StringReader("\\)test")));
+		assertEquals("(FOOBAR)", parser.parse(new StringReader("(FOOBAR\\)")));
 	}
 
 }

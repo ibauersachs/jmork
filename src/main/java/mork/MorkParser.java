@@ -295,6 +295,14 @@ public class MorkParser {
 		do {
 			int c = pis.read();
 			switch (c) {
+			case '\\':
+				int escapedCharacter = pis.read();
+				if (escapedCharacter == -1) {
+					throw new IOException(
+							"Escape character must not be last character in file");
+				}
+				buffer.append((char) escapedCharacter);
+				break;
 			case ')':
 				fireEvent(EventType.CELL, buffer.toString());
 				return;
@@ -361,12 +369,16 @@ public class MorkParser {
 	}
 
 	/**
-	 * Parse a whole dictionary
+	 * Parse a whole dictionary.
+	 * 
+	 * The <code>escaped</code> flag denotes if a special character is ignored
+	 * as command and thus read as a value object, because it has been escaped
+	 * using a backslash previsouly.
 	 * 
 	 * @param pis
 	 * @throws IOException
 	 */
-	private void parseDict(PushbackReader pis) throws IOException {
+	private void parseDict(final PushbackReader pis) throws IOException {
 		fireEvent(EventType.BEGIN_DICT);
 		final StringBuffer buffer = new StringBuffer();
 		boolean inMetaDict = false;
@@ -393,11 +405,15 @@ public class MorkParser {
 				fireEvent(EventType.END_DICT, buffer.toString());
 				return;
 			case '(':
-				isInCell = true;
+				if (!isInCell) {
+					isInCell = true;
+				}
 				buffer.append((char) c);
 				break;
 			case ')':
-				isInCell = false;
+				if (isInCell) {
+					isInCell = false;
+				}
 				buffer.append((char) c);
 				break;
 			case '/':

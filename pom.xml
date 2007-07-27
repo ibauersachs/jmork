@@ -50,10 +50,10 @@
 	</scm>
 	<licenses>
         <license>
-                        <name>Eclipse Public License - v 1.0</name>
- 	                        <url>http://www.eclipse.org/legal/epl-v10.html</url>
- 	                </license>
-	        </licenses>
+            <name>Eclipse Public License - v 1.0</name>
+ 	        <url>http://www.eclipse.org/legal/epl-v10.html</url>
+ 	    </license>
+    </licenses>
 	<distributionManagement>
 		<repository>
 			<id>smartwerkz</id>
@@ -200,6 +200,18 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+       			<artifactId>maven-changes-plugin</artifactId>
+     			<reportSets>
+    				<reportSet>
+           		 		<reports>
+              				<report>changes-report</report>
+              				<report>jira-report</report>
+            			</reports>
+          			</reportSet>
+        		</reportSets>
+      		</plugin>
 		</plugins>
 	</reporting>
 </project>
