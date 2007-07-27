@@ -11,7 +11,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Parses Mork content using event-based parsing.

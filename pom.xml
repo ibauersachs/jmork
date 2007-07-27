@@ -56,6 +56,12 @@
 			scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/
 		</developerConnection>
 	</scm>
+	<licenses>
+        <license>
+                        <name>Eclipse Public License - v 1.0</name>
+ 	                        <url>http://www.eclipse.org/legal/epl-v10.html</url>
+ 	                </license>
+	        </licenses>
 	<distributionManagement>
 		<repository>
 			<id>smartwerkz</id>

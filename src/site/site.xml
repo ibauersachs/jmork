@@ -2,6 +2,7 @@
 <project name="Maven">
 	<!-- Publish Date Positions: left, right, navigation-top, navigation-bottom, bottom -->
 	<publishDate position="navigation-bottom" format="MM-dd-yy" />
+	<version position="left"/>
 	<!-- 
 	<skin>
 		<groupId>org.apache.maven</groupId>
