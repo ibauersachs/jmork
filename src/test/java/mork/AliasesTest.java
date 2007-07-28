@@ -47,4 +47,13 @@ public class AliasesTest extends TestCase {
 		assertEquals("(bar)", aliases.getValue("foo"));
 	}
 
+	public void testInvalidAliasTooShort() throws Exception {
+		try {
+			new Aliases("()");
+			fail("RuntimeException expected");
+		} catch (RuntimeException expected) {
+			assertEquals("Alias must be at least 3 characters: ()",expected.getMessage());
+		}
+	}
+	
 }

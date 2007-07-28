@@ -6,8 +6,8 @@
 	</properties>
 	<body>
 		<release version="1.0.1" date="2007-07-28" description="Release">
-			<action dev="Mike Haller" type="bugfix">
-				Bugfix: Values with escaped characters were not recognized, e.g. "Foo (Bar)" is represented as "(Foo (Bar\))" and thus read as "Foo (Bar\" instead of "Foo (Bar)"
+			<action dev="Mike Haller" type="fix">
+				Values with escaped characters were not recognized correctly in Aliases
 			</action>
 		</release>
 		<release version="1.0.0" date="2007-01-05" description="Release">

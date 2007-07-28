@@ -85,14 +85,6 @@ public class Aliases {
 			throw new RuntimeException("Format of alias not supported: "
 					+ aliases);
 		}
-		// Pattern aliasesPattern = Pattern
-		// .compile("(?:\\(\\^?[\\w\\s^=\\^]*[=\\^][^\\)]*\\))");
-		// Matcher aliasesMatcher = aliasesPattern.matcher(aliases);
-		// while (aliasesMatcher.find()) {
-		// String alias = aliasesMatcher.group(); // (foo^80)
-		// parseSingleAlias(dicts, alias);
-		// }
-
 	}
 
 	/**
@@ -104,16 +96,13 @@ public class Aliases {
 	 * @param alias
 	 *            the alias including parentheses, e.g. <code>(^80=bar)</code>
 	 */
-	private void parseSingleAlias(List<Dict> dicts, String alias) {
-		if (alias.length() < 2) {
-			throw new RuntimeException("Alias must be at least 2 characters");
+	private void parseSingleAlias(final List<Dict> dicts, final String alias) {
+		if (alias.length() < 3) {
+			throw new RuntimeException("Alias must be at least 3 characters: "
+					+ alias);
 		}
-		if (alias.charAt(0) != '(' || alias.charAt(alias.length() - 1) != ')') {
-			throw new RuntimeException(
-					"Alias has wrong format, needs to be in parentheses: "
-							+ alias);
-		}
-		String withoutParentheses = alias.substring(1, alias.length() - 1);
+		final String withoutParentheses = alias
+				.substring(1, alias.length() - 1);
 		boolean isLiteral = withoutParentheses.indexOf('=') != -1;
 		if (isLiteral) {
 			String id = alias.substring(1, alias.indexOf('='));
