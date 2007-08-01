@@ -11,9 +11,10 @@ package mork;
  * @author mhaller
  */
 public enum ScopeTypes {
-	/** Values are usually in the Atom Scope */
-	ATOM_SCOPE,
+    /** Values are usually in the Atom Scope */
+    ATOM_SCOPE,
 
-	/** Column Names or Cell Ids are in the Column Scope */
-	COLUMN_SCOPE
+    /** Column Names or Cell Ids are in the Column Scope */
+    COLUMN_SCOPE,
+    ;
 }

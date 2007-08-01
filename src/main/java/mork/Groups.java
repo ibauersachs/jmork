@@ -13,47 +13,47 @@ import java.util.regex.Pattern;
  */
 public class Groups {
 
-	/** Internal container for all parsed groups */
-	private List<Group> groups = new LinkedList<Group>();
+    /** Internal container for all parsed groups */
+    private List<Group> groups = new LinkedList<Group>();
 
-	/**
-	 * Parse the given String for Group definitions
-	 * 
-	 * @param content
-	 *            the Mork content with Group definitions
-	 */
-	public Groups(String content) {
-		content = StringUtils.removeCommentLines(content);
-		content = StringUtils.removeNewlines(content);
-		Pattern pattern = Pattern
-				.compile("@\\$\\$\\{([0-9A-F]*)\\{@(.*)@\\$\\$\\}(\\1)\\}@");
-		Matcher matcher = pattern.matcher(content);
-		while (matcher.find()) {
-			String transactionId1 = matcher.group(1);
-			String transactionContent = matcher.group(2);
-			// String transactionId2 = matcher.group(3);
-			groups.add(new Group(transactionId1, transactionContent));
-		}
-	}
+    /**
+     * Parse the given String for Group definitions
+     * 
+     * @param content
+     *            the Mork content with Group definitions
+     */
+    public Groups(String content) {
+        content = StringUtils.removeCommentLines(content);
+        content = StringUtils.removeNewlines(content);
+        Pattern pattern = 
+            Pattern.compile("@\\$\\$\\{([0-9A-F]*)\\{@(.*)@\\$\\$\\}(\\1)\\}@");
+        Matcher matcher = pattern.matcher(content);
+        while (matcher.find()) {
+            String transactionId1 = matcher.group(1);
+            String transactionContent = matcher.group(2);
+            // String transactionId2 = matcher.group(3);
+            groups.add(new Group(transactionId1, transactionContent));
+        }
+    }
 
-	/**
-	 * Returns the number of groups found in the content
-	 * 
-	 * @return the number of groups
-	 */
-	public int countGroups() {
-		return groups.size();
-	}
+    /**
+     * Returns the number of groups found in the content
+     * 
+     * @return the number of groups
+     */
+    public int countGroups() {
+        return groups.size();
+    }
 
-	/**
-	 * Return a Group by its position in the internal list.
-	 * 
-	 * @param i
-	 *            the index position (This is NOT the Group ID!)
-	 * @return the Group
-	 */
-	public Group getGroup(int i) {
-		return groups.get(i);
-	}
+    /**
+     * Return a Group by its position in the internal list.
+     * 
+     * @param i
+     *            the index position (This is NOT the Group ID!)
+     * @return the Group
+     */
+    public Group getGroup(int i) {
+        return groups.get(i);
+    }
 
 }

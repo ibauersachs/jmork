@@ -13,20 +13,20 @@ import java.io.Serializable;
  */
 public class Event implements Serializable {
 
-	/**
-	 * SUID
-	 */
-	private static final long serialVersionUID = -953791935775686254L;
+    /**
+     * SUID
+     */
+    private static final long serialVersionUID = -953791935775686254L;
 
-	/**
-	 * The type of the Event, one of {@link EventType}, must never be null
-	 */
-	public EventType eventType;
+    /**
+     * The type of the Event, one of {@link EventType}, must never be null
+     */
+    public EventType eventType;
 
-	/**
-	 * A literal value associated with the event. Some events (of the
-	 * end-of-element events) contain values, others use <code>null</code>
-	 * here if no additional data is available.
-	 */
-	public String value;
+    /**
+     * A literal value associated with the event. Some events (of the
+     * end-of-element events) contain values, others use <code>null</code>
+     * here if no additional data is available.
+     */
+    public String value;
 }
