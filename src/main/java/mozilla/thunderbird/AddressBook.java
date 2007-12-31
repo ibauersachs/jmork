@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import mork.ExceptionHandler;
 import mork.MorkDocument;
 import mork.Row;
 import mork.Table;
@@ -20,6 +21,7 @@ public class AddressBook {
 
 	/** Internal container for Addresses */
 	private final List<Address> addresses = new LinkedList<Address>();
+	private ExceptionHandler exceptionHandler;
 
 	/**
 	 * Loads a Mork database from the given input and parses it as being a
@@ -37,7 +39,7 @@ public class AddressBook {
 			throw new IllegalArgumentException("InputStream must not be null");
 		}
 		final MorkDocument morkDocument = new MorkDocument(
-				new InputStreamReader(inputStream));
+				new InputStreamReader(inputStream), exceptionHandler);
 		for (Row row : morkDocument.getRows()) {
 			final Address address = new Address(row.getValues());
 			addresses.add(address);
@@ -60,6 +62,10 @@ public class AddressBook {
 	 */
 	public List<Address> getAddresses() {
 		return Collections.unmodifiableList(addresses);
+	}
+
+	public void setExceptionHandler(ExceptionHandler exceptionHandler) {
+		this.exceptionHandler = exceptionHandler;
 	}
 
 }

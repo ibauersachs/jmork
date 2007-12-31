@@ -35,6 +35,8 @@ public class MorkParser {
      */
 	private boolean ignoreTransactionFailures = false;
 
+	private ExceptionHandler exceptionHandler;
+
     /**
      * Adds the listener to the list of listeners notified of Mork events while
      * parsing
@@ -477,6 +479,10 @@ public class MorkParser {
      */
 	public void setIgnoreTransactionFailures(boolean ignoreTransactionFailures) {
 		this.ignoreTransactionFailures = ignoreTransactionFailures;
+	}
+
+	public void setExceptionHandler(ExceptionHandler exceptionHandler) {
+		ExceptionManager.setExceptionHandler(exceptionHandler);
 	}
 
 }

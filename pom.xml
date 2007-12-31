@@ -137,6 +137,19 @@
 				</configuration>
 				 -->
 			</plugin>
+			<!-- Makes jar executable: java -jar jmork-1.0.x.jar runs Swing GUI -->
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-jar-plugin</artifactId>
+		        <configuration>
+          		<archive>
+            		<manifest>
+              			<mainClass>mork.gui.Swing</mainClass>
+              			<addClasspath>true</addClasspath>
+            		</manifest>
+          		</archive>
+        		</configuration>
+      		</plugin>
 		</plugins>
 	</build>
 	<repositories>

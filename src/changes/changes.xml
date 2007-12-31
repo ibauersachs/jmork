@@ -5,6 +5,11 @@
 		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
 	</properties>
 	<body>
+		<release version="1.0.4" date="2007-12-31" description="Release">
+			<action dev="Mike Haller" type="fix">
+				Tables in groups for removing entries
+			</action>
+		</release>
 		<release version="1.0.1" date="2007-07-28" description="Release">
 			<action dev="Mike Haller" type="fix">
 				Values with escaped characters were not recognized correctly in Aliases

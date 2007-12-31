@@ -173,7 +173,7 @@ public class Dict {
     public static String dereference(String id, List<Dict> dicts, 
                                      ScopeTypes scope) {
         if (dicts.isEmpty()) {
-            throw new RuntimeException("Cannot dereference IDs without dictionaries");
+            return ExceptionManager.createString(id,new RuntimeException("Cannot dereference IDs without dictionaries"));
         }
         String dereference = null;
         for (Dict dict: dicts) {
@@ -185,8 +185,8 @@ public class Dict {
                 }
             }
         }
-        throw new RuntimeException("Dictionary could not dereference key: " + 
-                                   id + " in scope " + scope);
+        return ExceptionManager.createString(id,new RuntimeException("Dictionary could not dereference key: " + 
+                id + " in scope " + scope));
     }
 
 }

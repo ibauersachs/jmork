@@ -1,5 +1,6 @@
 package mork;
 
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.LinkedList;
@@ -30,13 +31,19 @@ public class MorkDocument implements EventListener {
      *            the Mork content
      */
     public MorkDocument(Reader reader) {
-        MorkParser parser = new MorkParser();
+       this(reader,new DefaultExceptionHandler());
+    }
+
+    public MorkDocument(Reader reader,
+			ExceptionHandler exceptionHandler) {
+    	MorkParser parser = new MorkParser();
+    	parser.setExceptionHandler(exceptionHandler);
         parser.setIgnoreTransactionFailures(true);
         parser.addEventListener(this);
         parser.parse(reader);
-    }
+	}
 
-    /**
+	/**
      * Internal
      */
     public void onEvent(Event event) {
@@ -74,6 +81,7 @@ public class MorkDocument implements EventListener {
         case END_DICT_METAINFO:
         case END_OF_FILE:
         case COMMENT:
+        case CELL:
             break;
         default:
             throw new RuntimeException("Unimplemented event: " + 

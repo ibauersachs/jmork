@@ -34,16 +34,4 @@ public class MorkDocumentTest extends TestCase {
 		assertEquals("John", row.getValue("givenname"));
 	}
 
-	public void testUnimplementedCellEvent() throws Exception {
-		MorkDocument morkDocument = new MorkDocument(new StringReader(""));
-		Event event = new Event();
-		event.eventType = EventType.CELL;
-		try {
-			morkDocument.onEvent(event);
-			fail("RuntimeException expected");
-		} catch (RuntimeException expected) {
-			assertEquals("Unimplemented event: CELL", expected.getMessage());
-		}
-	}
-
 }
