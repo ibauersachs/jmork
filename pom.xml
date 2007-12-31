@@ -63,7 +63,7 @@
 		<site>
 			<id>website</id>
 			<url>
-				scp://www.smartwerkz.com:622/www/hosts/com/smartwerkz/htdocs/projects/${project.artifactId}
+				scp://ssh.smartwerkz.com:622/www/hosts/com/smartwerkz/htdocs/projects/${project.artifactId}
 			</url>
 		</site>
 	</distributionManagement>
