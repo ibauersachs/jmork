@@ -1,6 +1,8 @@
 package mork;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import junit.framework.TestCase;
 
@@ -62,5 +64,27 @@ public class RowTest extends TestCase {
 		assertEquals("FALSE", row.getValue("xmozillausehtmlmail")); // 86 - 95
 		assertEquals("Hackworth", row.getValue("sn")); // 87 - 96
 	}
+	
+	public void testRowFromMozillaHistoryFile() throws Exception {
+		String content = "[-12FCF(a=b)(c=d)(e=f)(g=h)(i=j)]";
+		Row row = new Row(content);
+		assertEquals("-12FCF",row.getRowId());
+		assertEquals("b",row.getValue("a"));
+		assertEquals("j",row.getValue("i"));
+	}
 
+	public void testRowRemoval() throws Exception {
+		Row row = new Row("[-617]");
+		assertEquals("617",row.getRowId());
+	}
+	
+	public void testPattern() throws Exception {
+		Pattern pattern2 = 
+            Pattern.compile("\\[\\-([0-9A-F]*)\\]");
+        Matcher matcher2 = pattern2.matcher("[-617]");
+        assertTrue(matcher2.matches());
+        assertEquals("[-617]",matcher2.group(0));
+        assertEquals("617",matcher2.group(1));
+	}
+	
 }

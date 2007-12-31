@@ -31,6 +31,7 @@ public class MorkDocument implements EventListener {
      */
     public MorkDocument(Reader reader) {
         MorkParser parser = new MorkParser();
+        parser.setIgnoreTransactionFailures(true);
         parser.addEventListener(this);
         parser.parse(reader);
     }

@@ -1,0 +1,35 @@
+Mork understand thrww edit operations for rows and tables:
++ : the next object adds or inserts content listed to existing content (default, can be omitted)
+- : the next object cuts or removes content listed from existing content.
+! : the next object adds content listed, after clearing or deleting old existing content. 
+
+
+
+Complete Group definition of a "cut object" operation:
+
+@$${9{@
+{1:^80 {(k^BF:c)(s=9)} -
+  [-3]}
+@$$}9}@
+
+Manually transforming this into an XML-like format:
+
+<group id="9">
+ <table id="1" scope="ns:addrbk:db:row:scope:card:all">
+  <metatable>
+   <cell scope="c">
+     <key>k</key>
+     <value>ns:addrbk:db:table:kind:pab</value>
+   </cell>
+   <cell>
+     <key>s</key>
+     <value>9</value>
+   </cell>
+  </metatable>
+  <!-- "Cut" command removes the next row. However, dont know why its rowId=-3 instead of rowId=3 -->
+  <cut/>
+  <row id="-3"/>
+ </table>
+ <commit/>
+</group>
+

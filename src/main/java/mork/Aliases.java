@@ -88,6 +88,13 @@ public class Aliases {
     }
 
     /**
+     * Empty aliases, e.g. for rows which contain a transaction group 
+     * but no values
+     */
+    public Aliases() {
+	}
+
+	/**
      * Parses a single alias pair in the form <code>(key=value)</code> or
      * similar. See class comment for possible variations.
      * 

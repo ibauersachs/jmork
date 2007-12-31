@@ -2,6 +2,8 @@ package mork;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import junit.framework.TestCase;
 
@@ -51,4 +53,28 @@ public class TableTest extends TestCase {
 		assertEquals("bar", row0.getValue("foo"));
 	}
 
+	public void testPattern() throws Exception {
+		Pattern pattern2 = Pattern
+				.compile("\\{\\s*([-\\w]*):\\^([0-9A-Z]*)\\s*\\{(.*)\\}\\s*-\\s*\\[-?([0-9A-F]*)\\]\\}");
+		Matcher matcher2 = pattern2
+				.matcher("{1:^80 {(k^BE:c)(s=9)} -  [-5F8]}");
+		assertTrue(matcher2.matches());
+		assertEquals("{1:^80 {(k^BE:c)(s=9)} -  [-5F8]}",matcher2.group());
+		assertEquals("{1:^80 {(k^BE:c)(s=9)} -  [-5F8]}",matcher2.group(0));
+		assertEquals("1",matcher2.group(1));
+		assertEquals("80",matcher2.group(2));
+		assertEquals("(k^BE:c)(s=9)",matcher2.group(3));
+		assertEquals("5F8",matcher2.group(4));
+	}
+
+	public void testGroupRemoval() throws Exception {
+		List<Dict> dicts = new LinkedList<Dict>();
+		dicts.add(new Dict("<<(atomScope=c)>(80=cards)(81=name)>"));
+		Table table = new Table("{1:^80 {(k^BE:c)(s=9)} -  [-5F8]}",dicts);
+		assertEquals("1",table.getTableId());
+		assertEquals("cards",table.getScopeName());
+		assertEquals(1,table.getRows().size());
+		Row row = table.getRows().get(0);
+		assertEquals("5F8",row.getRowId());
+	}
 }

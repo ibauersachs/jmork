@@ -7,6 +7,11 @@ import junit.framework.TestCase;
 
 public class AliasesTest extends TestCase {
 
+	public void testEmptyAliases() throws Exception {
+		Aliases aliases = new Aliases();
+		assertEquals(0, aliases.count());
+	}
+	
 	public void testAliasesStringDictDict1() {
 		Dict dict = new Dict("<(80=bar)>");
 		Aliases aliases = new Aliases("(foo^80)", Collections

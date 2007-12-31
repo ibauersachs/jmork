@@ -32,3 +32,5 @@ More Information about Mork:
   http://en.wikipedia.org/wiki/Mork_(file_format)
 * A Mork parser in Perl
   http://www.jwz.org/hacks/mork.pl
+* Source repository of Mozilla Database stuff
+  http://lxr.mozilla.org/seamonkey/source/db/

@@ -42,17 +42,25 @@ public class Row {
             Pattern.compile("\\s*\\[\\s*(\\w*):(\\^?\\w*)\\s*(.*)\\s*\\]");
         Matcher matcher = pattern.matcher(content);
         if (!matcher.matches()) {
-            // Try to match simple row without scope name
-            Pattern pattern2 = 
-                Pattern.compile("\\s*\\[\\s*(\\w*)\\s*(.*)\\s*\\]");
-            Matcher matcher2 = pattern2.matcher(content);
-            if (!matcher2.matches()) {
-                throw new RuntimeException("Row does not match RegEx: " + 
-                                           content);
-            }
-            rowId = matcher2.group(1);
-            String cells = matcher2.group(2);
-            aliases = new Aliases(cells, dicts);
+        	Pattern pattern3 = Pattern.compile("\\[\\-([0-9A-F]*)\\]");
+			Matcher matcher3 = pattern3.matcher(content);
+			if (matcher3.matches()) {
+				// Row without cells (row within a transaction, e.g. for removal)
+				rowId = matcher3.group(1);
+				aliases = new Aliases();
+			} else {
+				// Try to match simple row without scope name
+				Pattern pattern2 = Pattern
+						.compile("\\s*\\[\\s*(-?\\w*)\\s*(.*)\\s*\\]");
+				Matcher matcher2 = pattern2.matcher(content);
+				if (!matcher2.matches()) {
+					throw new RuntimeException("Row does not match RegEx: "
+							+ content);
+				}
+				rowId = matcher2.group(1);
+				String cells = matcher2.group(2);
+				aliases = new Aliases(cells, dicts);
+			}
         } else {
             rowId = matcher.group(1);
 

@@ -19,12 +19,21 @@ import java.util.LinkedList;
  */
 public class MorkParser {
 
+	/** Simple logging */
+	private Log log = new Log(this);
+	
     /** Internal container of event listeners */
     private Collection<EventListener> eventListeners = 
         new LinkedList<EventListener>();
 
     /** Event reused for all events fired to all event listeners */
     private Event event = new Event();
+
+    /**
+     * Ignore exception when they happen within the parsing of mork groups, which
+     * is something like a transaction.
+     */
+	private boolean ignoreTransactionFailures = false;
 
     /**
      * Adds the listener to the list of listeners notified of Mork events while
@@ -173,7 +182,15 @@ public class MorkParser {
                             int f = pis.read();
                             if (f == '{') {
                                 // Read ID until "{@" appears
-                                parseGroup(pis);
+                            	if (ignoreTransactionFailures) {
+                            		try {
+                            			parseGroup(pis);
+                            		} catch (RuntimeException exception) {
+                            			log.warn("Ignoring parsing error within group",exception);
+                            		}
+                            	} else {
+                            		parseGroup(pis);
+                            	}
                                 break;
                             }
                             pis.unread(f);
@@ -451,5 +468,15 @@ public class MorkParser {
             }
         } while (true);
     }
+
+    /**
+     * If set to true, the mork parser ignores exceptions when they happen within
+     * the parsing of groups, as they are often non-essential for reading address book information.
+     * 
+     * @param ignoreTransactionFailures
+     */
+	public void setIgnoreTransactionFailures(boolean ignoreTransactionFailures) {
+		this.ignoreTransactionFailures = ignoreTransactionFailures;
+	}
 
 }
