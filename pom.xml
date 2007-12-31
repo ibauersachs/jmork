@@ -3,7 +3,7 @@
 	<groupId>jmork</groupId>
 	<artifactId>jmork</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>Java Mork</name>
 	<url>http://www.smartwerkz.com/projects/jmork/</url>
 	<description>
@@ -44,9 +44,9 @@
 		<url>http://www.smartwerkz.com/</url>
 	</organization>
 	<scm>
-		<url>http://www.smartwerkz.com/svn/public/projects/jmork/trunk/</url>
-		<connection>scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/</connection>
-		<developerConnection>scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/</developerConnection>
+		<url>http://www.smartwerkz.com/svn/public/projects/jmork/tags/jmork-1.0.2</url>
+		<connection>scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/tags/jmork-1.0.2</connection>
+		<developerConnection>scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/tags/jmork-1.0.2</developerConnection>
 	</scm>
 	<licenses>
         <license>
