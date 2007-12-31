@@ -5,6 +5,11 @@
 		<author email="mike.haller@smartwerkz.com">Mike Haller</author>
 	</properties>
 	<body>
+		<release version="1.0.5" date="2007-12-31" description="Release">
+			<action dev="Mike Haller" type="feature">
+				Simple Swing GUI to view email address book of Thunderbird
+			</action>
+		</release>
 		<release version="1.0.4" date="2007-12-31" description="Release">
 			<action dev="Mike Haller" type="fix">
 				Tables in groups for removing entries

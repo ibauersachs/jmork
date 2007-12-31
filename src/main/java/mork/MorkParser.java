@@ -35,8 +35,6 @@ public class MorkParser {
      */
 	private boolean ignoreTransactionFailures = false;
 
-	private ExceptionHandler exceptionHandler;
-
     /**
      * Adds the listener to the list of listeners notified of Mork events while
      * parsing
