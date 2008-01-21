@@ -8,6 +8,7 @@ public class GuiTest extends TestCase {
 		ProfileLocator locator = new ProfileLocator();
 		String result = locator.locateFirstThunderbirdAddressbookPath();
 		assertNotNull(result);
+		//TODO this test does not pass on linux; result is similar to /home/user/.mozilla-thunderbird/abc1234.default
 		assertTrue(result.contains("Thunderbird"));
 		assertTrue(result.contains("Profiles"));
 	}
