@@ -17,6 +17,10 @@ class ProfileLocator {
 	public String locateFirstThunderbirdAddressbookPath() {
 		// 1. Use environment variable "APPDATA"/Thunderbird/
 		String appData = System.getenv().get("APPDATA");
+		if (appData == null)
+		{
+		   return null;
+		}
 		File appDataFolder = new File(appData);
 		if (!appDataFolder.exists()) {
 			return null;
