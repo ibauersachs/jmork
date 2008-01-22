@@ -24,6 +24,17 @@ public class AddressBookTest extends TestCase {
 		addressBook.load(getClass().getResourceAsStream("/abook_urlingroup.mab"));
 	}
 	
+    public void testAddressBookReaderUmlauts() throws Exception {
+       AddressBook addressBook = new AddressBook();
+       addressBook.load(getClass().getResourceAsStream("/abook_umlauts.mab"));
+       
+       List<Address> addresses = addressBook.getAddresses();
+       assertEquals(1,addresses.size());
+       
+     Address address = addresses.get(0);
+     assertEquals("öß",address.getFirstName());
+   }	
+	
 	public void testAddressBookReader() throws Exception {
 		AddressBook addressBook = new AddressBook();
 		addressBook.load(getClass().getResourceAsStream("/abook_single.mab"));
