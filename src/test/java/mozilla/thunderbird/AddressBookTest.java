@@ -32,7 +32,7 @@ public class AddressBookTest extends TestCase {
        assertEquals(1,addresses.size());
        
      Address address = addresses.get(0);
-     assertEquals("öß",address.getFirstName());
+     assertEquals("öaß",address.getFirstName());
    }	
 	
 	public void testAddressBookReader() throws Exception {
@@ -42,11 +42,11 @@ public class AddressBookTest extends TestCase {
 		List<Address> addresses = addressBook.getAddresses();
 		assertEquals(1,addresses.size());
 		
-//		Address address = addresses.get(0);
-//		assertEquals("mike.haller@smartwerkz.com",address.getPrimaryEmail());
-//		assertEquals("Mike",address.getFirstName());
-//		assertEquals("Haller",address.getLastName());
-//		assertEquals("Mike Haller",address.getDisplayName());
+		Address address = addresses.get(0);
+		assertEquals("mike.haller@smartwerkz.com",address.getPrimaryEmail());
+		assertEquals("Mike",address.getFirstName());
+		assertEquals("Haller",address.getLastName());
+		assertEquals("Mike Haller",address.getDisplayName());
 	}
 	
 	public void testAddressBookNoAtomDatabaseFound() throws Exception {
