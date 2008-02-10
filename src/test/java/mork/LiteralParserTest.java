@@ -9,7 +9,7 @@ public class LiteralParserTest extends TestCase {
 	public void testPlainLiteral() throws Exception {
 		LiteralParser parser = new LiteralParser();
 		assertEquals("Foo", parser.parse(new StringReader("Foo")));
-		assertEquals("Brücke", parser.parse(new StringReader("Br$C3$BCcke")));
+		assertEquals("BrÃ¼cke", parser.parse(new StringReader("Br$C3$BCcke")));
 		assertEquals("test", parser.parse(new StringReader("test)")));
 		assertEquals("line1line2", parser.parse(new StringReader("line1\\\nline2")));
 		assertEquals("test", parser.parse(new StringReader("te\\st")));
