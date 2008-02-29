@@ -416,18 +416,7 @@ public class MorkParser {
 				buffer.append((char) c);
 				break;
 			case '$':
-				int c1 = pis.read();
-				int c2 = pis.read();
-				int i1 = Integer.valueOf(
-						new String(new char[] { (char) c1, (char) c2 }), 16)
-						.intValue();
-				pis.read(); // $
-				c1 = pis.read();
-				c2 = pis.read();
-				int i2 = Integer.valueOf(
-						new String(new char[] { (char) c1, (char) c2 }), 16)
-						.intValue();
-				buffer.append(new String(new byte[] { (byte) i1, (byte) i2 }));
+				parseEncodedCharacter(pis, buffer);
 				break;
 
 			case '>':
@@ -471,6 +460,31 @@ public class MorkParser {
 				break;
 			}
 		} while (true);
+	}
+
+	/**
+	 * Parses encoded characters into their UTF-8 representation.
+	 * 
+	 * Example: "$C3$B6$C3$A4$C3$BC$C3$9F" is "äöüß"
+	 * 
+	 * @param pis
+	 * @param buffer
+	 * @throws IOException
+	 */
+	private void parseEncodedCharacter(final PushbackReader pis,
+			final StringBuffer buffer) throws IOException {
+		int c1 = pis.read();
+		int c2 = pis.read();
+		int i1 = Integer.valueOf(
+				new String(new char[] { (char) c1, (char) c2 }), 16)
+				.intValue();
+		pis.read(); // $
+		c1 = pis.read();
+		c2 = pis.read();
+		int i2 = Integer.valueOf(
+				new String(new char[] { (char) c1, (char) c2 }), 16)
+				.intValue();
+		buffer.append(new String(new byte[] { (byte) i1, (byte) i2 },"UTF-8"));
 	}
 
 	/**

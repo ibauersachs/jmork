@@ -32,7 +32,7 @@ public class AddressBookTest extends TestCase {
        assertEquals(1,addresses.size());
        
      Address address = addresses.get(0);
-     assertEquals("öaß",address.getFirstName());
+     assertEquals("öäüß",address.getFirstName());
    }	
 	
 	public void testAddressBookReader() throws Exception {
