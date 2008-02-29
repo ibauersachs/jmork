@@ -8,7 +8,7 @@ package mork;
  */
 final class ExceptionManager {
 
-	private static ExceptionHandler exceptionHandler;
+	private static ExceptionHandler exceptionHandler  = new DefaultExceptionHandler();
 
 	public static String createString(String value, Throwable t) {
 		exceptionHandler.handle(t);
