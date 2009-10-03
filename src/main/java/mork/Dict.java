@@ -34,6 +34,14 @@ public class Dict {
      */
     private Aliases aliases;
 
+  	/**
+  	 * @return the aliases
+  	 */
+  	public Aliases getAliases() {
+  		return aliases;
+  	}
+
+
     /**
      * Parse a Dictionary using the given String content. The simplest
      * dictionary possible is <code>&gt;&lt;</code>.
@@ -188,5 +196,6 @@ public class Dict {
         return ExceptionManager.createString(id,new RuntimeException("Dictionary could not dereference key: " + 
                 id + " in scope " + scope));
     }
+
 
 }

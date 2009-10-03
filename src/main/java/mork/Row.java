@@ -2,6 +2,7 @@ package mork;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -126,8 +127,16 @@ public class Row {
      * @return a Map of all values found in the Row. The column header names
      *         (ids) and the values are already dereferenced.
      */
-    public Map<String, String> getValues() {
-        return aliases.getValues();
+    public Map<String, Alias> getAliases() {
+        return aliases.getAliases();
     }
+
+  	/**
+  	 * access to this row's keySet
+  	 * @return
+  	 */
+  	public Set<String> getKeySet() {
+  		return aliases.getKeySet();
+  	}
 
 }

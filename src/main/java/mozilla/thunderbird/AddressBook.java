@@ -42,13 +42,13 @@ public class AddressBook {
 		final MorkDocument morkDocument = new MorkDocument(
 				new InputStreamReader(inputStream), exceptionHandler);
 		for (Row row : morkDocument.getRows()) {
-			final Address address = new Address(row.getValues());
+			final Address address = new Address(row.getAliases());
 			addresses.add(address);
 		}
 		for (Table table : morkDocument.getTables()) {
 			for (Row row : table.getRows()) {
 				if (row.getValue("DisplayName") != null) {
-					final Address address = new Address(row.getValues());
+					final Address address = new Address(row.getAliases());
 					addresses.add(address);
 				}
 			}

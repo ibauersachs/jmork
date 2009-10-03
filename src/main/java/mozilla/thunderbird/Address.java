@@ -2,6 +2,8 @@ package mozilla.thunderbird;
 
 import java.util.Map;
 
+import mork.Alias;
+
 /**
  * Represents a single address in a Mozilla Thunderbird address book.
  * 
@@ -74,29 +76,33 @@ import java.util.Map;
  */
 public class Address {
 
-	private final Map<String, String> values;
+	private final Map<String, Alias> aliases;
 
-	public Address(Map<String, String> values) {
-		this.values = values;
+	public Address(Map<String, Alias> map) {
+		this.aliases = map;
+	}
+	
+	public String get(String id) {
+		return aliases.get(id).getValue();
 	}
 
 	public String getFirstName() {
-		return values.get("FirstName");
+		return get("FirstName");
 	}
 
 	public String getPrimaryEmail() {
-		return values.get("PrimaryEmail");
+		return get("PrimaryEmail");
 	}
 
 	public String getLastName() {
-		return values.get("LastName");
+		return get("LastName");
 	}
 
 	public String getDisplayName() {
-		return values.get("DisplayName");
+		return get("DisplayName");
 	}
 
 	public String getCompany() {
-		return values.get("Company");
+		return get("Company");
 	}
 }

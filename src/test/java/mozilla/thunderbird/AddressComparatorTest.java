@@ -6,18 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import mork.Alias;
+
 import junit.framework.TestCase;
 
-public class AddressComparatorTest extends TestCase {
+public class AddressComparatorTest extends AddressTest {
 
 	public void testCompare() {
-		Map<String, String> values1 = new HashMap<String, String>();
-		values1.put("LastName", "A");
-		Address ad1 = new Address(values1);
+		Map<String, Alias> aliases1 = new HashMap<String, Alias>();
+		put(aliases1,"LastName", "A");
+		Address ad1 = new Address(aliases1);
 
-		Map<String, String> values2 = new HashMap<String, String>();
-		values2.put("LastName", "Z");
-		Address ad2 = new Address(values2);
+		Map<String, Alias> aliases2 = new HashMap<String, Alias>();
+		put (aliases2,"LastName", "Z");
+		Address ad2 = new Address(aliases2);
 
 		// Temp
 		AddressComparator comparator = new AddressComparator();
