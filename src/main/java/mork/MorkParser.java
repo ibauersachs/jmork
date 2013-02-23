@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PushbackReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -217,9 +218,9 @@ public class MorkParser {
 	 * @throws IOException
 	 */
 	private void parseGroup(PushbackReader pis) throws IOException {
-		String id = parseUntil(pis, "{@");
-		String content = parseUntil(pis, "@$$}");
-		String abort = parseUntil(pis, id + "}@");
+		String id = parseUntil(pis, "{@".toCharArray());
+		String content = parseUntil(pis, "@$$}".toCharArray());
+		String abort = parseUntil(pis, (id + "}@").toCharArray());
 		if ("~abort~".equals(abort)) {
 			fireEvent(EventType.GROUP_ABORT, id);
 		} else {
@@ -240,19 +241,29 @@ public class MorkParser {
 	 *         <code>string</code> parameter which is silently removed
 	 * @throws IOException
 	 */
-	private String parseUntil(PushbackReader pis, String string)
+	private String parseUntil(PushbackReader pis, char[] string)
 			throws IOException {
 		final StringBuffer buf = new StringBuffer();
+		char[] temp = new char[string.length];
+		temp[0] = string[0];
 		while (true) {
 			int c = pis.read();
-			if (c == '\r' || c == '\n' || c == -1) {
+			if (c == -1) {
 				continue;
 			}
-			buf.append((char) c);
-			if (buf.toString().endsWith(string)) {
-				buf.delete(buf.length() - string.length(), buf.length());
-				break;
+			else if (c == string[0]) {
+				int d = pis.read(temp, 1, temp.length - 1);
+				if (d == -1) {
+					continue;
+				}
+				if (Arrays.equals(string, temp)) {
+					break;
+				} else{
+					buf.append(temp, 0, temp.length);
+					continue;
+				}
 			}
+			buf.append((char) c);
 		}
 		return buf.toString();
 	}

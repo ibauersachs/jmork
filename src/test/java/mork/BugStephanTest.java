@@ -12,7 +12,7 @@ public class BugStephanTest extends TestCase {
 		MorkDocument morkDocument = new MorkDocument(reader);
 
 		List<Dict> dicts = morkDocument.getDicts();
-		assertEquals(5,dicts.size());
+		assertEquals(6,dicts.size());
 		
 		Dict dict0 = dicts.get(0);
 		assertEquals(70,dict0.getAliasCount());
