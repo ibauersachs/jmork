@@ -2,6 +2,7 @@ package mork;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -139,4 +140,26 @@ public class Row {
   		return aliases.getKeySet();
   	}
 
+	/**
+	 * Formats the content of this row showing all values.
+	 * 
+	 * @return the content of this row showing all values.
+	 */
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[\r\n");
+		for (Entry<String, Alias> e : aliases.getAliases().entrySet()) {
+			if (!"".equals(e.getValue().getValue())) {
+				sb.append("	{");
+				sb.append(e.getKey());
+				sb.append('=');
+				sb.append(e.getValue().getValue());
+				sb.append("},\r\n");
+			}
+		}
+
+		sb.append("]\r\n");
+		return sb.toString();
+	}
 }
