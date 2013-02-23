@@ -405,59 +405,84 @@ public class MorkParser {
 		boolean isInCell = false;
 		do {
 			int c = pis.read();
-			switch (c) {
-			case -1: {
-				fireEvent(EventType.END_DICT, buffer.toString());
-				return;
+			if (isInCell) {
+				switch (c) {
+					case -1: {
+						fireEvent(EventType.END_DICT, buffer.toString());
+						return;
+					}
+					case ')':
+						if (buffer.toString().substring(buffer.length() - 1) != "\\") {
+							isInCell = false;
+						}
+						buffer.append((char) c);
+						break;
+					case '$':
+						parseEncodedCharacter(pis, buffer);
+						break;
+					default:
+						if (c == '\r' || c == '\n') {
+							break;
+						}
+						buffer.append((char) c);
+						break;
+				}
 			}
-			case '<':
-				fireEvent(EventType.BEGIN_DICT_METAINFO);
-				inMetaDict = true;
-				buffer.append((char) c);
-				break;
-			case '$':
-				parseEncodedCharacter(pis, buffer);
-				break;
+			else {
+				switch (c) {
+					case -1: {
+						fireEvent(EventType.END_DICT, buffer.toString());
+						return;
+					}
+					case '<':
+						fireEvent(EventType.BEGIN_DICT_METAINFO);
+						inMetaDict = true;
+						buffer.append((char) c);
+						break;
+					case '$':
+						parseEncodedCharacter(pis, buffer);
+						break;
 
-			case '>':
-				if (inMetaDict) {
-					fireEvent(EventType.END_DICT_METAINFO);
-					inMetaDict = false;
-					buffer.append((char) c);
-					break;
+					case '>':
+						if (inMetaDict) {
+							fireEvent(EventType.END_DICT_METAINFO);
+							inMetaDict = false;
+							buffer.append((char) c);
+							break;
+						}
+						fireEvent(EventType.END_DICT, buffer.toString());
+						return;
+					case '(':
+						if (!isInCell) {
+							isInCell = true;
+						}
+						buffer.append((char) c);
+						break;
+					case ')':
+						if (isInCell) {
+							isInCell = false;
+						}
+						buffer.append((char) c);
+						break;
+					case '/':
+						if (isInCell) {
+							buffer.append((char) c);
+							break;
+						}
+						int d = pis.read();
+						if (d == '/') {
+							parseComment(pis);
+							break;
+						}
+						buffer.append((char) c);
+						break;
+					default:
+						if (c == '\r' || c == '\n') {
+							break;
+						}
+						buffer.append((char) c);
+						break;
 				}
-				fireEvent(EventType.END_DICT, buffer.toString());
-				return;
-			case '(':
-				if (!isInCell) {
-					isInCell = true;
-				}
-				buffer.append((char) c);
-				break;
-			case ')':
-				if (isInCell) {
-					isInCell = false;
-				}
-				buffer.append((char) c);
-				break;
-			case '/':
-				if (isInCell) {
-					buffer.append((char) c);
-					break;
-				}
-				int d = pis.read();
-				if (d == '/') {
-					parseComment(pis);
-					break;
-				}
-				buffer.append((char) c);
-				break;
-			default:
-				if (c == '\r' || c == '\n') {
-					break;
-				}
-				buffer.append((char) c);
-				break;
 			}
 		} while (true);
 	}
