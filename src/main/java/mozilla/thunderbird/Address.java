@@ -83,7 +83,12 @@ public class Address {
 	}
 	
 	public String get(String id) {
-		return aliases.get(id).getValue();
+		Alias a = aliases.get(id);
+		if (a != null){
+			return a.getValue();
+		}
+
+		return null;
 	}
 
 	public String getFirstName() {
