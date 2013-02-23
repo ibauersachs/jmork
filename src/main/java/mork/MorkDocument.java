@@ -84,7 +84,7 @@ public class MorkDocument implements EventListener {
             break;
         default:
             throw new RuntimeException("Unimplemented event: " + 
-                                       event.eventType);
+                                       event.eventType + " for content " + event.value);
         }
     }
 
