@@ -350,7 +350,7 @@ public class MorkParser {
 				fireEvent(EventType.ROW, buffer.toString());
 				return;
 			}
-			if (c == '\r' || c == '\n' || c == -1) {
+			if (c == -1) {
 				break;
 			}
 			buffer.append((char) c);
