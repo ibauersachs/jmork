@@ -137,11 +137,15 @@ public class MorkWriter {
 	public void writeIndent() throws IOException {
 		writer.append(zm_LineEnd);
 		switch (outputStyle) {
-		case formatted:
-			for (int i = 0; i < indentation; i++) {
-				writer.append(zm_Space);
-			}
-			break;
+			case formatted:
+				for (int i = 0; i < indentation; i++) {
+					writer.append(zm_Space);
+				}
+				break;
+			case humandReadable:
+			case terse:
+			default:
+				break;
 		}
 	}
 
