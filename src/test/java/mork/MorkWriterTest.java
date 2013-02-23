@@ -79,7 +79,7 @@ public class MorkWriterTest extends JMorkTest {
 	 * test the tables and rows are being written
 	 * @throws Exception
 	 */
-	public void testTables() throws Exception {
+	private void xtestTables() throws Exception {
 		init("panacea.dat");
 		writer.write(ostream);
 		if (debug)
