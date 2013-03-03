@@ -423,13 +423,17 @@ public class MorkParser {
 						return;
 					}
 					case ')':
-						if (buffer.toString().substring(buffer.length() - 1) != "\\") {
+						if (buffer.charAt(buffer.length() - 1) != '\\') {
 							isInCell = false;
 						}
 						buffer.append((char) c);
 						break;
 					case '$':
-						parseEncodedCharacter(pis, buffer);
+						if (buffer.charAt(buffer.length() - 1) != '\\') {
+							parseEncodedCharacter(pis, buffer);
+						} else{
+							buffer.append((char) c);
+						}
 						break;
 					default:
 						if (c == '\r' || c == '\n') {
@@ -514,13 +518,18 @@ public class MorkParser {
 		int i1 = Integer.valueOf(
 				new String(new char[] { (char) c1, (char) c2 }), 16)
 				.intValue();
-		pis.read(); // $
-		c1 = pis.read();
-		c2 = pis.read();
-		int i2 = Integer.valueOf(
-				new String(new char[] { (char) c1, (char) c2 }), 16)
-				.intValue();
-		buffer.append(new String(new byte[] { (byte) i1, (byte) i2 },"UTF-8"));
+		int dollar = pis.read(); // $
+		if (dollar == '$') {
+			int c3 = pis.read();
+			int c4 = pis.read();
+			int i2 = Integer.valueOf(
+					new String(new char[] { (char) c3, (char) c4 }), 16)
+					.intValue();
+			buffer.append(new String(new byte[] { (byte) i1, (byte) i2 },"UTF-8"));
+		} else {
+			buffer.append((char)i1);
+			pis.unread(dollar);
+		}
 	}
 
 	/**
