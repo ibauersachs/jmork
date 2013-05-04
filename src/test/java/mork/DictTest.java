@@ -89,6 +89,15 @@ public class DictTest extends TestCase {
 		assertEquals("c", dict.getScopeValue());
 	}
 
+	public void testDictWithNewlineValue() throws Exception {
+        Dict dict = new Dict("<<a=c>(80=foo\r\nbar)>");
+        assertSame(ScopeTypes.COLUMN_SCOPE, dict.getDefaultScope());
+        assertEquals(1, dict.getAliasCount());
+        assertEquals("foo\r\nbar", dict.getValue("80"));
+        assertEquals("a", dict.getScopeName());
+        assertEquals("c", dict.getScopeValue());
+	}
+
 	public void testSingleAliasWithInnerWhitespaces() throws Exception {
 		Dict dict = new Dict("< <a=c> (80=foo) >");
 		assertSame(ScopeTypes.COLUMN_SCOPE, dict.getDefaultScope());
