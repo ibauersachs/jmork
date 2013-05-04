@@ -68,7 +68,7 @@ public class Dict {
 
         Pattern pattern = 
             Pattern.compile("\\s*<\\s*(<\\(?.*\\)?>)?[\\s\\n\\r]*(.*)>[\\s\\r\\n]*", 
-                            Pattern.MULTILINE);
+                            Pattern.MULTILINE | Pattern.DOTALL);
         Matcher matcher = pattern.matcher(dictString);
         if (!matcher.find()) {
             throw new RuntimeException("RegEx does not match: " + dictString);
