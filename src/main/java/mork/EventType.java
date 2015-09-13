@@ -29,15 +29,15 @@ public enum EventType {
     // ! bang - put update: clear and set content
 
     /**
-     * A '<' begint the Dict. If already in a dict, another event is fired:
+     * A '&lt;' begins the Dict. If already in a dict, another event is fired:
      * BEGIN_DICT_METAINFO
      */
     BEGIN_DICT,
 
-    /** '>' Close Angle ends a dict */
+    /** '&gt;' Close Angle ends a dict */
     END_DICT,
 
-    /** A '<' inside a Dict starts the Dict's Metainfo Part */
+    /** A '&lt;' inside a Dict starts the Dict's Metainfo Part */
     BEGIN_DICT_METAINFO,
 
     /** Ends the Metainfo within a Dict */

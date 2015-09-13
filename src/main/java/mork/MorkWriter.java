@@ -308,12 +308,12 @@ public class MorkWriter {
 		//unindent();
 	}
 
-  /**
+	/**
 	 * write the given Dictionary
-	 * zm:Dict      ::= zm:S? '<' zm:DictItem* zm:S? '>'
+	 * zm:Dict      ::= zm:S? '&lt;' zm:DictItem* zm:S? '&gt;'
 	 * zm:DictItem  ::= zm:MetaDict | zm:Alias
-   * zm:MetaDict  ::= zm:S? '<' zm:S? zm:Cell* zm:S? '>' / meta attributes /
-   * zm:Alias     ::= zm:S? '(' zm:Id zm:S? zm:Value ')'
+	 * zm:MetaDict  ::= zm:S? '&lt;' zm:S? zm:Cell* zm:S? '&gt;' / meta attributes /
+	 * zm:Alias     ::= zm:S? '(' zm:Id zm:S? zm:Value ')'
 	 * @param dict
 	 * @throws IOException 
 	 */
