@@ -1,18 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>jmork</groupId>
+	<groupId>org.jitsi</groupId>
 	<artifactId>jmork</artifactId>
 	<packaging>bundle</packaging>
 	<version>1.0.5-SNAPSHOT</version>
 	<name>Java Mork</name>
-	<url>http://www.smartwerkz.com/projects/jmork/</url>
+	<url>https://github.com/ibauersachs/jmork</url>
 	<description>
 		A Java implementation of the Mork database format
 	</description>
 	<issueManagement>
-		<system>JIRA</system>
-		<url>http://www.smartwerkz.com/jira/browse/LAB</url>
+		<system>GitHub Issues</system>
+		<url>https://github.com/ibauersachs/jmork/issues</url>
 	</issueManagement>
+
 	<developers>
 		<developer>
 			<id>mhaller</id>
@@ -28,45 +30,30 @@
 			</roles>
 			<timezone>+1</timezone>
 		</developer>
+		<developer>
+			<id>ibauersachs</id>
+			<name>Ingo Bauersachs</name>
+			<email>ibauersachs@gmail.com</email>
+		</developer>
 	</developers>
-	<ciManagement>
-		<system>Continuum</system>
-		<url>http://claude.smartwerkz.com:8080/continuum</url>
-		<notifiers>
-			<notifier>
-				<type>mail</type>
-				<address>mike.haller@smartwerkz.com</address>
-			</notifier>
-		</notifiers>
-	</ciManagement>
-	<organization>
-		<name>smartwerkz.com</name>
-		<url>http://www.smartwerkz.com/</url>
-	</organization>
+
 	<scm>
-		<url>http://www.smartwerkz.com/svn/public/projects/jmork/trunk/</url>
-		<connection>scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/</connection>
-		<developerConnection>scm:svn:http://www.smartwerkz.com/svn/public/projects/jmork/trunk/</developerConnection>
+		<url>https://github.com/ibauersachs/jmork/</url>
+		<connection>scm:git:https://github.com/ibauersachs/jmork.git</connection>
+		<developerConnection>scm:git:https://github.com/ibauersachs/jmork.git</developerConnection>
 	</scm>
+
 	<licenses>
-        <license>
-            <name>Eclipse Public License - v 1.0</name>
- 	        <url>http://www.eclipse.org/legal/epl-v10.html</url>
- 	    </license>
-    </licenses>
-	<distributionManagement>
-		<repository>
-			<id>smartwerkz</id>
-			<name>Smartwerkz Maven2 Repository</name>
-			<url>dav:http://www.smartwerkz.com/maven2</url>
-		</repository>
-		<site>
-			<id>website</id>
-			<url>
-				scp://ssh.smartwerkz.com:622/www/hosts/com/smartwerkz/htdocs/projects/${project.artifactId}
-			</url>
-		</site>
-	</distributionManagement>
+		<license>
+			<name>Eclipse Public License - v1.0</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+		</license>
+	</licenses>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -75,162 +62,119 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-1</version>
-			</extension>
-		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.0</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>2.3.7</version>
 				<extensions>true</extensions>
-				<configuration/>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.0</version>
 				<configuration />
-				<executions>
-					<execution>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<descriptors>
-						<descriptor>src/assembly/bin.xml</descriptor>
-						<descriptor>src/assembly/src.xml</descriptor>
-					</descriptors>
-					<outputDirectory>
-						${project.build.directory}/site/files/
-					</outputDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>site</phase>
-						<goals>
-							<goal>attached</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<!-- 
-				<configuration>
-					<templateDirectory>${basedir}</templateDirectory>
-					<template>maven-site.vm</template>
-				</configuration>
-				 -->
-			</plugin>
+
 			<!-- Makes jar executable: java -jar jmork-1.0.x.jar runs Swing GUI -->
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-jar-plugin</artifactId>
-		        <configuration>
-          		<archive>
-            		<manifest>
-              			<mainClass>mork.gui.Swing</mainClass>
-              			<addClasspath>true</addClasspath>
-            		</manifest>
-          		</archive>
-        		</configuration>
-      		</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>mork.gui.Swing</mainClass>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-	<repositories>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.3</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>false</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
 		<repository>
-			<id>smartwerkz</id>
-			<name>smartwerkz Repository</name>
-			<url>http://www.smartwerkz.com/maven2</url>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
-	</repositories>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>
-					maven-project-info-reports-plugin
-				</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jxr-maven-plugin</artifactId>
-				<configuration>
-					<linkJavadoc>true</linkJavadoc>
-					<bottom>Copyright (c) 2007 smartwerkz.com</bottom>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<configuration>
-					<linkXref>true</linkXref>
-					<sourceEncoding>utf-8</sourceEncoding>
-					<targetJdk>1.5</targetJdk>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>changelog-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>taglist-maven-plugin</artifactId>
-			</plugin>
-			<!-- Codehaus Plugins -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jdepend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-        		<groupId>org.apache.maven.plugins</groupId>
-       			<artifactId>maven-changes-plugin</artifactId>
-     			<reportSets>
-    				<reportSet>
-           		 		<reports>
-              				<report>changes-report</report>
-            			</reports>
-          			</reportSet>
-        		</reportSets>
-      		</plugin>
-		</plugins>
-	</reporting>
+	</distributionManagement>
 </project>
