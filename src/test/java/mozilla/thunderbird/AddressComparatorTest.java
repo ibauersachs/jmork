@@ -8,8 +8,6 @@ import java.util.Map;
 
 import mork.Alias;
 
-import junit.framework.TestCase;
-
 public class AddressComparatorTest extends AddressTest {
 
 	public void testCompare() {

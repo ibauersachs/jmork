@@ -1,6 +1,5 @@
 package mozilla.thunderbird;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import mork.Alias;

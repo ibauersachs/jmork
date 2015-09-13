@@ -1,11 +1,8 @@
 package mozilla.thunderbird;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import mork.Alias;
-
-import junit.framework.TestCase;
 
 public class AddressAccessTest extends AddressTest {
 	

@@ -3,10 +3,7 @@ package mork;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 /**
  * test the Mork Writer
@@ -75,42 +72,42 @@ public class MorkWriterTest extends JMorkTest {
 		}	
 	}
 	
-	/**
-	 * test the tables and rows are being written
-	 * @throws Exception
-	 */
-	private void xtestTables() throws Exception {
-		init("panacea.dat");
-		writer.write(ostream);
-		if (debug)
-			System.out.println(ostream.toString());
-		InputStreamReader reader = new InputStreamReader(new ByteArrayInputStream(ostream.toByteArray()));
-		MorkDocument wDocument = new MorkDocument(reader);
-		List<Table> mTables = morkDocument.getTables();
-		List<Table> wTables = wDocument.getTables();
-	
-		// compare tables gotten from written document to original ones
-		assertEquals(mTables.size(),wTables.size());
-		for (int i=0;i<mTables.size();i++) {
-			Table mTable=mTables.get(i);
-			Table wTable=wTables.get(i);
-			// check that there are as many rows written as originally parsed
-			List<Row> mRows = mTable.getRows();
-			List<Row> wRows = wTable.getRows();
-			assertEquals(mRows.size(),wRows.size());
-			for (int j=0;j<mRows.size();j++) {
-				Row mRow=mRows.get(i);
-				Row wRow=wRows.get(i);
-			// check all values written to the ones originally parsed
-				for (String name:mRow.getKeySet()){
-					String mValue=mRow.getValue(name);
-					String wValue=wRow.getValue(name);
-					assertEquals(mValue,wValue);
-				}
-			}
-			
-		}	
-	}
+//	/**
+//	 * test the tables and rows are being written
+//	 * @throws Exception
+//	 */
+//	public void testTables() throws Exception {
+//		init("panacea.dat");
+//		writer.write(ostream);
+//		if (debug)
+//			System.out.println(ostream.toString());
+//		InputStreamReader reader = new InputStreamReader(new ByteArrayInputStream(ostream.toByteArray()));
+//		MorkDocument wDocument = new MorkDocument(reader);
+//		List<Table> mTables = morkDocument.getTables();
+//		List<Table> wTables = wDocument.getTables();
+//	
+//		// compare tables gotten from written document to original ones
+//		assertEquals(mTables.size(),wTables.size());
+//		for (int i=0;i<mTables.size();i++) {
+//			Table mTable=mTables.get(i);
+//			Table wTable=wTables.get(i);
+//			// check that there are as many rows written as originally parsed
+//			List<Row> mRows = mTable.getRows();
+//			List<Row> wRows = wTable.getRows();
+//			assertEquals(mRows.size(),wRows.size());
+//			for (int j=0;j<mRows.size();j++) {
+//				Row mRow=mRows.get(i);
+//				Row wRow=wRows.get(i);
+//			// check all values written to the ones originally parsed
+//				for (String name:mRow.getKeySet()){
+//					String mValue=mRow.getValue(name);
+//					String wValue=wRow.getValue(name);
+//					assertEquals(mValue,wValue);
+//				}
+//			}
+//			
+//		}	
+//	}
 	
 
 }
