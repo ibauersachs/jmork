@@ -67,6 +67,7 @@ public class Controller {
 
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void openInternalFrame(String title, Collection<?> model) {
 		final JList list = new JList(model.toArray());
 		list.setCellRenderer(new DefaultListCellRenderer() {
