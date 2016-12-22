@@ -15,6 +15,24 @@ public class AddressComparator implements Comparator<Address> {
 			return o1.getPrimaryEmail().compareToIgnoreCase(
 					o2.getPrimaryEmail());
 		}
+		if (o1.getLastName() == null && o2.getLastName() != null) {
+			return 1;
+		}
+		if (o1.getLastName() != null && o2.getLastName() == null) {
+			return -1;
+		}
+		if (o1.getDisplayName() == null && o2.getDisplayName() != null) {
+			return 1;
+		}
+		if (o1.getDisplayName() != null && o2.getDisplayName() == null) {
+			return -1;
+		}
+		if (o1.getPrimaryEmail() == null && o2.getPrimaryEmail() != null) {
+			return 1;
+		}
+		if (o1.getPrimaryEmail() != null && o2.getPrimaryEmail() == null) {
+			return -1;
+		}
 		return 0;
 	}
 
