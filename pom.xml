@@ -3,7 +3,7 @@
 	<groupId>org.jitsi</groupId>
 	<artifactId>jmork</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.6</version>
+	<version>1.0.7-SNAPSHOT</version>
 	<name>Java Mork</name>
 	<url>https://github.com/ibauersachs/jmork</url>
 	<description>
@@ -40,7 +40,7 @@
 		<url>https://github.com/ibauersachs/jmork/</url>
 		<connection>scm:git:https://github.com/ibauersachs/jmork.git</connection>
 		<developerConnection>scm:git:https://github.com/ibauersachs/jmork.git</developerConnection>
-	  <tag>jmork-1.0.6</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<licenses>
